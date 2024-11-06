@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.send('Hello from the root URL!'); 
 });
 
-app.get('/isaiah/create/linktoken', async (req, res) => {
+app.get('/create/linktoken', async (req, res) => {
   try {
     const createTokenResponse = await plaidClient.linkTokenCreate({
       user: {

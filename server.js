@@ -7,13 +7,18 @@ const configuration = new Configuration({
   basePath: PlaidEnvironments.sandbox, // Or PlaidEnvironments.production if you're live
   baseOptions: {
     headers: {
-      'PLAID-CLIENT-ID': '66edbca9a1c71b001bc4ec9a',
-      'PLAID-SECRET': '3d9c03b6bbd512fb9d88868034d842',
+      'PLAID-CLIENT-ID': process.env.PLAID_CLIENT_ID, // Get from environment variables
+      'PLAID-SECRET': process.env.PLAID_SECRET, // Get from environment variables
     },
   },
 });
 
 const plaidClient = new PlaidApi(configuration);
+
+// Root route handler
+app.get('/', (req, res) => {
+  res.send('Hello from the root URL!'); 
+});
 
 app.get('/isaiah/create/linktoken', async (req, res) => {
   try {
